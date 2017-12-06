@@ -4,3 +4,5 @@ unsigned char getnetcmdcount();
 char* popnetqueue();
 void netqueueinit();
 void cleartemp();
+
+

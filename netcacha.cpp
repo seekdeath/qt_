@@ -2,8 +2,10 @@
 #include "stdio.h"
 #include "string.h"
 
+
 #define netcmdmax 256
 #define netcmdcountmax 16
+
 char netqueue[netcmdcountmax][netcmdmax];//命令队列
 unsigned char queuehead=0;//队列头
 unsigned char queueend=0;//队尾
@@ -86,8 +88,9 @@ int pushnetqueue(char* src)
         {
             return 2;//
         }
+        return 3;
     }
-
+    return 3;
 }
 unsigned char getnetcmdcount()
 {
@@ -125,7 +128,7 @@ char* popnetqueue()
             queueend = 0;
             return netqueue[netcmdcountmax-1];
         }
-
+        return 0;
     }
 }
 //命令队列初始化
