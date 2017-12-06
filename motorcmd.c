@@ -97,7 +97,48 @@ char MotorSetHomeAcc(unsigned short nAddr,unsigned short Acc,unsigned short Dec,
 {
 	return SendCommand1(NULL,"%02XE%04X%04X%04X",nAddr,Acc,Dec,Run);
 }
+//读取Home模式Offset/评估距离的加减速和运行速度
+char MotorGetHomeAcc(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xe");
+}
+//设置Home模式的低速、高速、空闲电流
+char MotorSetHomeCurrent(unsigned short nAddr,unsigned short LowI,unsigned short HighI,unsigned short HoldI)
+{
+    return SendCommand1(NULL,"%02XR%04X%04X%04X",nAddr,LowI,HighI,HoldI);
+}
+//读取Home模式的低速、高速、空闲电流
+char MotorGetHomeCurrent(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xr%04X%04X%04X",nAddr,LowI,HighI,HoldI);
+}
+//设置Home offset评估距离 硬件零点
+char MotorSetHomeOffset(unsigned short nAddr ,unsigned int HomeOffset,unsigned int AssDis,unsigned short HardZero)
+{
+    return SendCommand1(NULL,"%02XF%08X%08X%04X",nAddr,HomeOffset,AssDis,HardZero);
+}
+//读取Home offset 评估距离 硬件零点
+char MotorGetHomeOffset(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xf",nAddr);
+}
+//设置最大回原距离、液位探测最大距离、正限位坐标、负限位坐标、点击运行误差、速度比率
+char MotorSetMaxDist(unsigned short nAddr,unsigned int MaxDist,unsigned int LiquidDist,unsigned int ForwardDist,unsigned int ReverseDist,unsigned short StepOffset，unsigned short SpeedRate)
+{
+    return SendCommand1(NULL,"%02XG%08X%08X%08X%08X%04X%04X",nAddr,MaxDist,LiquidDist,ForwardDist,ReverseDist,StepOffset，SpeedRate);
+}
+//读取最大回原距离，液位探测最大距离，正限位坐标，负限位坐标、点击运行误差、速度比率
+char MotorGetMaxDist(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xg",nAddr);
+}
 char MotorReset(unsigned short nAddr)
 {
 	return SendCommand1()
 }
+
+
+
+
+
+
