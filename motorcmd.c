@@ -132,6 +132,17 @@ char MotorGetMaxDist(unsigned short nAddr)
 {
     return SendCommand1(NULL,"%02Xg",nAddr);
 }
+//设置参数、步距角、编码器精度、细分、每半圈步数
+char MotorSetParam(unsigned short nAddr,unsigned short Param,unsigned short StepAngle,unsigned short EncoderAccuracy,unsigned short Subdivide,unsigned short StepHalfRound)
+{
+	return SendCommand1(NULL,"%02XH%04X%04X%04X%04X%04X",nAddr,Param,StepAngle,EncoderAccuracy,Subdivide,StepHalfRound);
+}
+//读取参数、步距角、编码器精度、细分、每半圈步数
+char MotorGetParam(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xh",nAddr);
+}
+//
 char MotorReset(unsigned short nAddr)
 {
 	return SendCommand1()
