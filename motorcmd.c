@@ -142,7 +142,123 @@ char MotorGetParam(unsigned short nAddr)
 {
 	return SendCommand1(NULL,"%02Xh",nAddr);
 }
-//
+//设置绝对位置/相对位置
+char MotorSetAbsolutoPos(unsigned short nAddr,unsigned char Operate,unsigned short Pos)
+{
+	return SendCommand1(NULL,"%02XI%d%08X",nAddr,Operate,Pos);
+}
+//读取当前的绝对位置
+char MotorGetAbsolutoPos(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xi");
+}
+//配置管脚停止条件
+char MotorSetStopPin(unsigned short nAddr,unsigned char Dir,unsigned char Pin,unsigned char Condition)
+{
+	return SendCommand1(NULL,"%02XI2%d%d%d",nAddr,Dir,Pin,Condition);
+}
+//点动速度运行/停止
+char MotorSetRunStop(unsigned short nAddr,unsigned char Flag)
+{
+	return SendCommand1(NULL,"%02XJ%d",nAddr,Flag);
+}
+//读取速度模式状态
+char MotorGetRunStopSta(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xj");
+}
+//设置液位模式告诉空走距离+探液深度(速度？)
+char MotorSetLiquidDist(unsigned short nAddr,unsigned short HighSpeedDist,unsigned short Speed)
+{
+	return SendCommand1(NULL,"%02XK0%08X%04")
+}
+//设置液位探测最大深度
+char MotorSetLiquidMaxDist(unsigned short nAddr, short MaxDist)
+{
+	return SendCommand1(NULL,"%02XK%08X");
+}
+//读取液位模式运行状态
+char MotorGetLiquidSta(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xk");
+}
+//设置力矩模式下保护距离和速度。高速空走距离和力矩保护距离（转速）
+char MotorSetMomentMode(unsigned short nAddr, long Moment,unsigned short Speed)
+{
+	return SendCommand1(NULL,%02XL0%08X%04X",nAddr,Moment,Speed);
+}
+//设置力矩模式高速空走坐标  到达该坐标后以力矩速度探测运行
+char MotorSetMomentModeHighSpeed(unsigned short nAddr,long Dist)
+{
+	return SendCommand1(NULL,"%02XL1%08X",nAddr,Dist);
+}
+//读取力矩模式运行状态
+char MotorGetMomentSta(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xl",nAddr);
+}
+//电机复位
+char MototReset(unsigned short nAddr,unsigned char Flag)
+{
+	return SendCommand1(NULL,"%02XM%d",nAddr,Flag);
+}
+//读取电机回零状态
+char MotorGetResetSta(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xm",nAddr);
+}
+//使能和失能电机
+char MotorSetAble(unsigned short nAddr ,unsigned char Flag)
+{
+	return SendCommand1(NULL,"%02XN%1d");
+}
+//快速停止 （刹车）
+char MotorStop(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02XO",nAddr);
+}
+//读取上一次运行步数
+char MotorGetlast(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xo")
+}
+//电机参数保存
+char MotorSaveParam(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02XP",nAddr);
+}
+//读取位置模式的状态
+char MotorGetPosSta(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xp");
+}
+//设置Q程序
+//char MotorQProgram(unsigned short nAddr,unsigned char SN,)
+
+//q读取Q程序
+
+//V设置延时时间
+char MotorSetDelay(unsigned short nAddr,unsigned short Delay)
+{
+	return SendCommand1(NULL,"%02XV%04X",nAddr,Delay);
+}
+//v读取程序版本
+char MotorGetversion(unsigned short nAddr)
+{
+	return SendCommand1(NULL,"%02Xv");
+}
+//S设置当前位置
+char MotorSetPos(unsigned short nAddr,unsigned short Pos)
+{
+	return SendCommand1(NULL,"%02XS04X",nAddr,Pos);
+}
+//读取状态和报警
+char MotorGetSta(unsigned short nAddr,unsigned char Sta)
+{
+	return SendCommand1(NULL,"%02Xs%1d",nAddr,Sta);
+}
+//T设置电机地址/波特率
+
 char MotorReset(unsigned short nAddr)
 {
 	return SendCommand1()

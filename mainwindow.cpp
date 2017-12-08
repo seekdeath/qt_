@@ -49,17 +49,17 @@ void MainWindow::on_pushButton_clicked()
         netcmdcount = getnetcmdcount();
     }
 }
-void cheacknetcmd(char* netcmd)
-{
-    unsigned int num = 0;
-    num = strlen(netcmd);
-    if(num < 10)
-    {
-        return 1;//异常
-    }
-    else if(num > netcmdmax)
-    {
-        return 1;//超限
-    }
+//void cheacknetcmd(char* netcmd)
+//{
+//    unsigned int num = 0;
+//    num = strlen(netcmd);
+//    if(num < 10)
+//    {
+//        return 1;//异常
+//    }
+//    else if(num > netcmdmax)
+//    {
+//        return 1;//超限
+//    }
 
-}
+//}

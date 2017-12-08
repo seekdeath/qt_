@@ -17,6 +17,7 @@ unsigned char netququefull = 0;//queue full state
 //拆分函数
 int splitnetcmd(char* str)
 {
+    nettemp[1] = 0;
     char nettemp1[256]={0};
     unsigned __int64 len = 0;
     unsigned int index = 0;
