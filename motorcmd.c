@@ -258,7 +258,49 @@ char MotorGetSta(unsigned short nAddr,unsigned char Sta)
 	return SendCommand1(NULL,"%02Xs%1d",nAddr,Sta);
 }
 //T设置电机地址/波特率
-
+char MotorSetAddr(unsigned short nAddr, unsigned short NewAddr)
+{
+    return SendCommand1(NULL,"%02XT0%02X",nAddr,Flag,NewAddr);
+}
+//T 设置波特率
+char MotorSetBaud(unsigned short nAddr,unsigned short NewBaud)
+{
+    return SendCommand1(NULL,"%02T1%02X");
+}
+//t 读取地址,波特率
+char MotorGetAddr(unsigned short nAddr,unsigned char Flag)
+{
+    return SendCommand1(NULL,"%02X%1d");
+}
+//W设置管脚功能
+char MotorSetPin(unsigned short nAddr,unsigned short Pin,unsigned short Opr)
+{
+    return SendCommand1(NULL,"%02XW%02X%02X",nAddr,Pin,Opr);
+}
+//W设置管脚输出
+char MotorSetPinOpr(unsigned short nAddr,unsigned short Pin,unsigned long PinOut)
+{
+    return SendCommand1(NULL,"%02XW%02X%08X",nAddr,Pin,PinOut);
+}
+//w获取管脚配置状态
+char MotorGetPinSta(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xw0");
+}
+//w获取管脚输入输出状态
+char MotorGetPinOut(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xw1",nAddr);
+}
+char MotorSetAllParam(unsigned short nAddr,unsigned char* param)
+{
+    return SendCommand1(NULL,"%02XU%148X",nAddr,param);
+}
+//u读取所有参数
+char MotorGetAllParam(unsigned short nAddr)
+{
+    return SendCommand1(NULL,"%02Xu");
+}
 char MotorReset(unsigned short nAddr)
 {
 	return SendCommand1()
