@@ -14,6 +14,11 @@ extern unsigned char StaBao1;
 
 #define 	WAIT_BACK_TIMEOUTS		Ms2Tick(100)
 #define 	TRY(expression)			{unsigned char __i;for(__i = 0; __i<10; __i++){if((expression)!=0)break;}}
+unsigned short GetRevCrc_16(unsigned char * pData,  unsigned char nLength);
+char IsFrame1Ok(void);
+char wait_back(char nAddr);
+void ResetFrame1(void);
+void ReceiverData1(unsigned char sq0);
 unsigned short cal_crc(unsigned char *byte,unsigned char nbyte);
 char SendCommand1(char* pReceiveBuf,const char* lpszFormat,...);
 //A设置位置模式加减速和运行速度
